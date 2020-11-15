@@ -1,0 +1,25 @@
+﻿@using CustomHelper.Customclasses
+    ViewBag.Title = "Index";
+}
+
+@helper Labelwithrazorunderline(string content)
+	{
+
+	<label><u>@content</u></label>
+	}
+
+
+<h2>Index</h2>
+<h1>static</h1>
+<p>
+	<b><i>cuhdjsduh</i></b>
+	@Customhelper.LabelwithMark("this example is for static custome helper")
+
+</p>
+<p>
+	@Html.LabelwithItalic("Extension Method")
+</p>
+<h2>@Html.Labelwithcolor("custom helper")</h2>
+
+<p>@Labelwithrazorunderline("Way 3")</p>
+

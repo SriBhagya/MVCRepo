@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "GetCategoryDetails";
+}
+
+<h2>GetCategoryDetails</h2>
+@foreach (var c in Model)
+{
+	<ul>
+		<li>@c.CategoryID</li>
+		<li>@c.CategoryName</li>
+		<li>@c.Description</li>
+	</ul>
+}
+

@@ -1,0 +1,28 @@
+﻿@model IEnumerable<PrjMVCFirstApp.Models.Department>
+
+@{
+	ViewBag.Title = "ListDepartmentDetails";
+}
+
+<h2>ListDepartmentDetails</h2>
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Department Name</th>
+
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<td>@item.id</td>
+				<td>@item.dname</td>
+			</tr>
+		}
+	</tbody>
+
+
+</table>

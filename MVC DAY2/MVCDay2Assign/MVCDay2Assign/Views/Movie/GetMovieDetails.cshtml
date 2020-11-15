@@ -1,0 +1,16 @@
+﻿
+@{
+	ViewBag.Title = "GetMovieDetails";
+}
+
+<h2>GetMovieDetails</h2>
+
+@foreach (var m in Model)
+{
+	<ul>
+		<li>@m.MovieID</li>
+		<li>@m.Moviename</li>
+		<li>@m.releasedate</li>
+	</ul>
+}
+

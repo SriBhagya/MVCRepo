@@ -1,0 +1,39 @@
+﻿@model IEnumerable<prjCodeFirstEg.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.carname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cartype)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.carname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cartype)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.carno }) |
+            @Html.ActionLink("Details", "Details", new { id=item.carno }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.carno })
+        </td>
+    </tr>
+}
+
+</table>

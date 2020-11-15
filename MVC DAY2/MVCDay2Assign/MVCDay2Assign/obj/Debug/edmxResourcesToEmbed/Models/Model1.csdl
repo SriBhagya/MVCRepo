@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBmovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Movietable">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="Moviename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="releasedate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="DBmovieEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Movietables" EntityType="Self.Movietable" />
+    <EntitySet Name="Customertables" EntityType="DBmovieModel.Customertable" />
+    <EntitySet Name="Moviebookingtables" EntityType="DBmovieModel.Moviebookingtable" />
+    <EntitySet Name="Screentables" EntityType="DBmovieModel.Screentable" />
+    <EntitySet Name="Theatretables" EntityType="DBmovieModel.Theatretable" />
+  </EntityContainer>
+  <EntityType Name="Customertable">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="Int32" Nullable="false" />
+    <Property Name="Customername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Moviebookingtable">
+    <Key>
+      <PropertyRef Name="BookingID" />
+      <PropertyRef Name="ScreenID" />
+      <PropertyRef Name="Noofseats" />
+    </Key>
+    <Property Name="BookingID" Type="Int32" Nullable="false" />
+    <Property Name="ScreenID" Type="Int32" Nullable="false" />
+    <Property Name="Noofseats" Type="Int32" Nullable="false" />
+    <Property Name="Totalamount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Screentable">
+    <Key>
+      <PropertyRef Name="ScreenID" />
+      <PropertyRef Name="TheatreID" />
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="ScreenID" Type="Int32" Nullable="false" />
+    <Property Name="TheatreID" Type="Int32" Nullable="false" />
+    <Property Name="MovieID" Type="Int32" Nullable="false" />
+    <Property Name="Amount" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Theatretable">
+    <Key>
+      <PropertyRef Name="TheatreID" />
+    </Key>
+    <Property Name="TheatreID" Type="Int32" Nullable="false" />
+    <Property Name="TheatreName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

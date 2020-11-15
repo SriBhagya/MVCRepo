@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBmovieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Customertable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Customertable">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" Nullable="false" />
+          <Property Name="Customername" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Moviebookingtable">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="int" Nullable="false" />
+          <Property Name="ScreenID" Type="int" Nullable="false" />
+          <Property Name="Noofseats" Type="int" Nullable="false" />
+          <Property Name="Totalamount" Type="int" />
+        </EntityType>
+        <EntityType Name="Movietable">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="int" Nullable="false" />
+          <Property Name="Moviename" Type="varchar" MaxLength="50" />
+          <Property Name="releasedate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Screentable">
+          <Key>
+            <PropertyRef Name="ScreenID" />
+          </Key>
+          <Property Name="ScreenID" Type="int" Nullable="false" />
+          <Property Name="TheatreID" Type="int" Nullable="false" />
+          <Property Name="MovieID" Type="int" Nullable="false" />
+          <Property Name="Amount" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Theatretable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Theatretable">
+          <Key>
+            <PropertyRef Name="TheatreID" />
+          </Key>
+          <Property Name="TheatreID" Type="int" Nullable="false" />
+          <Property Name="TheatreName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="DBmovieModelStoreContainer">
+          <EntitySet Name="Moviebookingtable" EntityType="Self.Moviebookingtable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movietable" EntityType="Self.Movietable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Screentable" EntityType="Self.Screentable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customertable" EntityType="Self.Customertable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Customertable].[CustomerID] AS [CustomerID], 
+    [Customertable].[Customername] AS [Customername]
+    FROM [dbo].[Customertable] AS [Customertable]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Theatretable" EntityType="Self.Theatretable" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Theatretable].[TheatreID] AS [TheatreID], 
+    [Theatretable].[TheatreName] AS [TheatreName], 
+    [Theatretable].[Location] AS [Location]
+    FROM [dbo].[Theatretable] AS [Theatretable]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBmovieModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Moviebookingtable">
+          <Key>
+            <PropertyRef Name="BookingID" />
+          </Key>
+          <Property Name="BookingID" Type="Int32" Nullable="false" />
+          <Property Name="ScreenID" Type="Int32" Nullable="false" />
+          <Property Name="Noofseats" Type="Int32" Nullable="false" />
+          <Property Name="Totalamount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Movietable">
+          <Key>
+            <PropertyRef Name="MovieID" />
+          </Key>
+          <Property Name="MovieID" Type="Int32" Nullable="false" />
+          <Property Name="Moviename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="releasedate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Screentable">
+          <Key>
+            <PropertyRef Name="ScreenID" />
+          </Key>
+          <Property Name="ScreenID" Type="Int32" Nullable="false" />
+          <Property Name="TheatreID" Type="Int32" Nullable="false" />
+          <Property Name="MovieID" Type="Int32" Nullable="false" />
+          <Property Name="Amount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Customertable">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="Customername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Theatretable">
+          <Key>
+            <PropertyRef Name="TheatreID" />
+          </Key>
+          <Property Name="TheatreID" Type="Int32" Nullable="false" />
+          <Property Name="TheatreName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="DBmovieEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Moviebookingtables" EntityType="Self.Moviebookingtable" />
+          <EntitySet Name="Movietables" EntityType="Self.Movietable" />
+          <EntitySet Name="Screentables" EntityType="Self.Screentable" />
+          <EntitySet Name="Customertables" EntityType="Self.Customertable" />
+          <EntitySet Name="Theatretables" EntityType="Self.Theatretable" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBmovieModelStoreContainer" CdmEntityContainer="DBmovieEntities">
+          <EntitySetMapping Name="Moviebookingtables">
+            <EntityTypeMapping TypeName="DBmovieModel.Moviebookingtable">
+              <MappingFragment StoreEntitySet="Moviebookingtable">
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="Noofseats" ColumnName="Noofseats" />
+                <ScalarProperty Name="Totalamount" ColumnName="Totalamount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movietables">
+            <EntityTypeMapping TypeName="DBmovieModel.Movietable">
+              <MappingFragment StoreEntitySet="Movietable">
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="Moviename" ColumnName="Moviename" />
+                <ScalarProperty Name="releasedate" ColumnName="releasedate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Screentables">
+            <EntityTypeMapping TypeName="DBmovieModel.Screentable">
+              <MappingFragment StoreEntitySet="Screentable">
+                <ScalarProperty Name="ScreenID" ColumnName="ScreenID" />
+                <ScalarProperty Name="TheatreID" ColumnName="TheatreID" />
+                <ScalarProperty Name="MovieID" ColumnName="MovieID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customertables">
+            <EntityTypeMapping TypeName="DBmovieModel.Customertable">
+              <MappingFragment StoreEntitySet="Customertable">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="Customername" ColumnName="Customername" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Theatretables">
+            <EntityTypeMapping TypeName="DBmovieModel.Theatretable">
+              <MappingFragment StoreEntitySet="Theatretable">
+                <ScalarProperty Name="TheatreID" ColumnName="TheatreID" />
+                <ScalarProperty Name="TheatreName" ColumnName="TheatreName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

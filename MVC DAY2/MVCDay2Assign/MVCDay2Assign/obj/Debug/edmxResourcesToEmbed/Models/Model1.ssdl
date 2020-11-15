@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBmovieModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Customertable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Customertable">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="Customername" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Moviebookingtable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Moviebookingtable">
+    <Key>
+      <PropertyRef Name="BookingID" />
+      <PropertyRef Name="ScreenID" />
+      <PropertyRef Name="Noofseats" />
+    </Key>
+    <Property Name="BookingID" Type="int" Nullable="false" />
+    <Property Name="ScreenID" Type="int" Nullable="false" />
+    <Property Name="Noofseats" Type="int" Nullable="false" />
+    <Property Name="Totalamount" Type="int" />
+  </EntityType>
+  <EntityType Name="Movietable">
+    <Key>
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="MovieID" Type="int" Nullable="false" />
+    <Property Name="Moviename" Type="varchar" MaxLength="50" />
+    <Property Name="releasedate" Type="datetime" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Screentable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Screentable">
+    <Key>
+      <PropertyRef Name="ScreenID" />
+      <PropertyRef Name="TheatreID" />
+      <PropertyRef Name="MovieID" />
+    </Key>
+    <Property Name="ScreenID" Type="int" Nullable="false" />
+    <Property Name="TheatreID" Type="int" Nullable="false" />
+    <Property Name="MovieID" Type="int" Nullable="false" />
+    <Property Name="Amount" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'DBmovie.dbo.Theatretable' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Theatretable">
+    <Key>
+      <PropertyRef Name="TheatreID" />
+    </Key>
+    <Property Name="TheatreID" Type="int" Nullable="false" />
+    <Property Name="TheatreName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="DBmovieModelStoreContainer">
+    <EntitySet Name="Movietable" EntityType="Self.Movietable" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Customertable" EntityType="Self.Customertable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Customertable].[CustomerID] AS [CustomerID], 
+    [Customertable].[Customername] AS [Customername]
+    FROM [dbo].[Customertable] AS [Customertable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Moviebookingtable" EntityType="Self.Moviebookingtable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Moviebookingtable].[BookingID] AS [BookingID], 
+    [Moviebookingtable].[ScreenID] AS [ScreenID], 
+    [Moviebookingtable].[Noofseats] AS [Noofseats], 
+    [Moviebookingtable].[Totalamount] AS [Totalamount]
+    FROM [dbo].[Moviebookingtable] AS [Moviebookingtable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Screentable" EntityType="Self.Screentable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Screentable].[ScreenID] AS [ScreenID], 
+    [Screentable].[TheatreID] AS [TheatreID], 
+    [Screentable].[MovieID] AS [MovieID], 
+    [Screentable].[Amount] AS [Amount]
+    FROM [dbo].[Screentable] AS [Screentable]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Theatretable" EntityType="Self.Theatretable" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Theatretable].[TheatreID] AS [TheatreID], 
+    [Theatretable].[TheatreName] AS [TheatreName], 
+    [Theatretable].[Location] AS [Location]
+    FROM [dbo].[Theatretable] AS [Theatretable]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
